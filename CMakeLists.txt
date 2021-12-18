@@ -7,6 +7,14 @@
 
 cmake_minimum_required(VERSION 3.16)
 
+if(APPLE)
+	# build universal binaries for MacOS
+	# NOTE: CMAKE_OSX_ARCHITECTURES must be specified before project()
+	set(CMAKE_OSX_ARCHITECTURES x86_64;arm64 CACHE STRING "")
+	# build MacOS bundles
+	set(CMAKE_MACOSX_BUNDLE TRUE)
+endif()
+
 project(tr31
 	VERSION 0.2.1
 	DESCRIPTION "TR-31 library and tools"
@@ -193,6 +201,13 @@ if(rpmbuild_FOUND)
 	# assign package suggestions
 	set(CPACK_RPM_TR31_DOCS_PACKAGE_SUGGESTS "tr31-devel")
 	# NOTE: RPM generator automatically detects dependencies
+endif()
+
+if(APPLE)
+	list(APPEND CPACK_GENERATOR "DragNDrop")
+	set(CPACK_COMPONENTS_ALL tr31_bundle)
+	set(CPACK_DMG_DS_STORE_SETUP_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/macos/tr31_dmg_setup.scpt")
+	set(CPACK_DMG_BACKGROUND_IMAGE "${CMAKE_CURRENT_SOURCE_DIR}/macos/CMakeDMGBackground.tif")
 endif()
 
 include(CPack)

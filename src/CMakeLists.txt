@@ -96,6 +96,9 @@ endif()
 install(TARGETS tr31-tool
 	RUNTIME
 		COMPONENT tr31_runtime
+	BUNDLE
+		COMPONENT tr31_bundle
+		DESTINATION . # install to root of MacOS bundle
 )
 
 if(BUILD_TESTING)
