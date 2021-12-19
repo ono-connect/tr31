@@ -207,7 +207,7 @@ if(APPLE)
 	list(APPEND CPACK_GENERATOR "DragNDrop")
 	set(CPACK_COMPONENTS_ALL tr31_bundle)
 	set(CPACK_DMG_DS_STORE_SETUP_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/macos/tr31_dmg_setup.scpt")
-	set(CPACK_DMG_BACKGROUND_IMAGE "${CMAKE_CURRENT_SOURCE_DIR}/macos/CMakeDMGBackground.tif")
+	set(CPACK_DMG_BACKGROUND_IMAGE "${CMAKE_CURRENT_SOURCE_DIR}/macos/tr31_dmg_bg.tif")
 endif()
 
 include(CPack)
