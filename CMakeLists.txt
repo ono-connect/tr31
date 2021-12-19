@@ -16,7 +16,7 @@ if(APPLE)
 endif()
 
 project(tr31
-	VERSION 0.2.1
+	VERSION 0.3.0
 	DESCRIPTION "TR-31 library and tools"
 	HOMEPAGE_URL "https://github.com/ono-connect/tr31"
 	LANGUAGES C
